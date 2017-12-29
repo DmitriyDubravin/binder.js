@@ -32,11 +32,11 @@ export default function binder(selectorsAndFunctionsBounds, runTests = false) {
                     mergedModules[script.name] = script;
                     mergedModules[script.name]();
                 } else {
-                    mergedModules = {...mergedModules, ...script};
+                    mergedModules = Object.assign(mergedModules, script);
                 }
             });
         } else if (nature === "[object Object]") {
-            mergedModules = {...mergedModules, ...module};
+            mergedModules = Object.assign(mergedModules, module);
         } else if (nature === "[object Function]") {
             mergedModules[module.name] = module;
             mergedModules[module.name]();
